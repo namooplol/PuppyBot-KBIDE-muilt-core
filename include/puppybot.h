@@ -120,6 +120,13 @@ void printText(uint8_t x,uint8_t y,String text,uint8_t size,uint16_t  color){
   tft_.setTextWrap(true);
   tft_.println(text);
 }
+void printText(uint8_t x,uint8_t y,int text,uint8_t size,uint16_t  color){
+  tft_.setCursor(x, y);
+  tft_.setTextSize(size);
+  tft_.setTextColor(color);
+  tft_.setTextWrap(true);
+  tft_.println(String(text));
+}
 void printText(uint8_t x,uint8_t y,String text,uint8_t size,uint16_t  color1,uint16_t  color2){
   tft_.setCursor(x, y);
   tft_.setTextSize(size);
@@ -197,52 +204,9 @@ void wait_SW1_one() {
       }
       if(digitalRead(6) == 0){break;}
     }
-    // printnumber(0,0,"0=",ADC(0),2,ST77XX_YELLOW,ST77XX_RED);
-    // printnumber(80,0,"1=",ADC(1),2,ST77XX_YELLOW,ST77XX_RED);
-    // printnumber(0,17,"2=",ADC(2),2,ST77XX_YELLOW,ST77XX_RED);
-    // printnumber(80,17,"3=",ADC(3),2,ST77XX_YELLOW,ST77XX_RED);
-    // printnumber(0,34,"4=",ADC(4),2,ST77XX_YELLOW,ST77XX_RED);
-    // printnumber(80,34,"5=",ADC(5),2,ST77XX_YELLOW,ST77XX_RED);
-    // printnumber(0,51,"6=",ADC(6),2,ST77XX_YELLOW,ST77XX_RED);
-    // printnumber(80,51,"7=",ADC(7),2,ST77XX_YELLOW,ST77XX_RED);
-    // printnumber(0,68,"8=",ADC(8),2,ST77XX_YELLOW,ST77XX_RED);
-    // printnumber(80,68,"9=",ADC(9),2,ST77XX_YELLOW,ST77XX_RED);
-    // printnumber(0,85,"10=",ADC(10),2,ST77XX_YELLOW,ST77XX_RED);
-
-    // drawString("0="+String(ADC(0))+' ',0,0);
-    // drawString("1="+String(ADC(1))+' ',80,0);
-    // drawString("2="+String(ADC(2))+' ',0,17);
-    // drawString("3="+String(ADC(3))+' ',80,17);
-    // drawString("4="+String(ADC(4))+' ',0,34);
-    // drawString("5="+String(ADC(5))+' ',80,34);
-    // drawString("6="+String(ADC(6))+' ',0,51);
-    // drawString("7="+String(ADC(7))+' ',80,51);
-    // drawString("8="+String(ADC(8))+' ',0,68);
-    // drawString("9="+String(ADC(9))+' ',80,68);
-    // drawString("10="+String(ADC(10))+' ',0,85);
     
-    // if(state_waitSW1 == 0){
-    //   state_waitSW1 = 1;
-    //   tft_.setTextColor(ST77XX_RED, ST77XX_BLUE);
-    //   drawString("  SW1 Press  ",0,105);
-    // }
-    // else
-    // {
-    //   state_waitSW1 = 0;
-    //   tft_.setTextColor(ST77XX_GREEN, ST77XX_YELLOW);
-    //   drawString("  SW1 Press  ",0,105);
-    // }
-  	
-  	//delay(50);
   } while (digitalRead(6) == 1);
-  // buzzer(500,100);
-  // delay(200);
-  // buzzer(700,100);
-  // delay(200);
-  // buzzer(1000,100);
-  // delay(200);
   buzzer(2000,100);
-  //tft_.fillScreen(ST77XX_BLACK);
   
 }
 void wait_SW1() {
@@ -270,20 +234,6 @@ void wait_SW1() {
     drawString("8="+String(ADC(8))+' ',0,68);
     drawString("9="+String(ADC(9))+' ',80,68);
     drawString("10="+String(ADC(10))+' ',0,85);
-    
-    // if(state_waitSW1 == 0){
-    //   state_waitSW1 = 1;
-    //   tft_.setTextColor(ST77XX_RED, ST77XX_BLUE);
-    //   drawString("  SW1 Press  ",0,105);
-    // }
-    // else
-    // {
-    //   state_waitSW1 = 0;
-    //   tft_.setTextColor(ST77XX_GREEN, ST77XX_YELLOW);
-    //   drawString("  SW1 Press  ",0,105);
-    // }
-    
-    //delay(50);
   } while (digitalRead(6) == 1);
   buzzer(500,100);
   delay(200);
@@ -292,7 +242,6 @@ void wait_SW1() {
   buzzer(1000,100);
   delay(200);
   buzzer(2000,100);
-  //tft_.fillScreen(ST77XX_BLACK);
   
 }
 
