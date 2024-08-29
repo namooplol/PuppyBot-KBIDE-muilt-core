@@ -126,7 +126,7 @@ Blockly.Blocks['PuppyBot_servo_speed_control'] = {
   init: function() {
     this.appendDummyInput()
       .appendField("set servo")
-      .appendField(new Blockly.FieldDropdown([["1","1"], ["2","2"]]), "ch");
+      .appendField(new Blockly.FieldDropdown([["1","1"], ["2","2"], ["3","3"], ["4","4"]]), "ch");
     this.appendValueInput("servo_degree")
       .setCheck("Number")
       .appendField("Degree:");

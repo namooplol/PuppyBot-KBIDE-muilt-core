@@ -332,17 +332,31 @@ Blockly.Blocks['PuppyBot_PID_setline_color_Black'] = {
     this.setTooltip("Set line color");
   }
 };
+// Blockly.Blocks['PID_readLine_B'] = {
+//   init: function() {
+//     this.appendDummyInput()
+//         .appendField("Back_PID_readLine");
+//     this.setInputsInline(true);
+//     this.setOutput(true, "Number");
+//     this.setColour(280);
+//  this.setTooltip("PID_readLine");
+//  this.setHelpUrl("");
+//   }
+// };
+
 Blockly.Blocks['PID_readLine_B'] = {
   init: function() {
     this.appendDummyInput()
         .appendField("Back_PID_readLine");
     this.setInputsInline(true);
-    this.setOutput(true, "Number");
+    this.setOutput(true);
     this.setColour(280);
  this.setTooltip("PID_readLine");
  this.setHelpUrl("");
   }
 };
+
+
 Blockly.Blocks['PuppyBot_PID_setMin_B'] = {
   init: function() {
     this.appendDummyInput()
