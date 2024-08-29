@@ -508,6 +508,7 @@ void sr(int speed_Motor){
 }
 
 void servoRun(uint8_t servo_ch, int16_t angle) {
+	if(angle == 0 ){angle = 1;}
 
   if (servo_ch == 1)
   {
@@ -799,16 +800,16 @@ void setCalibrate_B(int round){
     for (uint8_t i = 0; i < PID_NumPin_B; i++)
     {
       PID_Max_B[i] = 0;
-      PID_Min_B[i] = 4095;
+      PID_Min_B[i] = 1023;
     }
     first_state_for_calribrate_B = 1;
   }
   for(int roundOfCalribtate = 0; roundOfCalribtate < round ;roundOfCalribtate++ ){
     for (uint8_t i = 0; i < PID_NumPin_B; i++)
     {
-      if(ADC(PID_SetupPin_B[i]) > PID_Max_B[i] || PID_Max_B[i] >= 4095 ){
+      if(ADC(PID_SetupPin_B[i]) > PID_Max_B[i] || PID_Max_B[i] >= 1023 ){
         PID_Max_B[i]  = ADC(PID_SetupPin_B[i]);
-        if(PID_Max_B[i] > 4095 )PID_Max_B[i] = 4095;
+        if(PID_Max_B[i] > 1023 )PID_Max_B[i] = 1023;
       }
     }
     for (uint8_t i = 0; i < PID_NumPin_B; i++)
