@@ -205,7 +205,7 @@ module.exports = function(Blockly) {
     init: function() {
       this.appendValueInput("text")
         // .appendField(new Blockly.FieldImage("https://www.flaticon.com/premium-icon/icons/svg/1163/1163412.svg", 20, 20, "*"))
-        .setCheck("String")
+        // .setCheck("String")
         .appendField("display text");
       this.appendValueInput("x")
         .setCheck("Number")
@@ -231,7 +231,7 @@ module.exports = function(Blockly) {
     init: function() {
       this.appendValueInput("text")
         // .appendField(new Blockly.FieldImage("https://www.flaticon.com/premium-icon/icons/svg/1163/1163412.svg", 20, 20, "*"))
-        .setCheck("String")
+        // .setCheck("String")
         .appendField("display text");
       this.appendValueInput("x")
         .setCheck("Number")

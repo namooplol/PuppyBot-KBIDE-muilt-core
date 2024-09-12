@@ -21,6 +21,37 @@ module.exports = {
                         </value>
                     </block>`
                 },
+                {
+                    xml: `<sep gap="25"></sep><label text="ถ้าใช้งาน color sensor ตัวที่1 จะต้องต่อ SDA SCL ตามปกติ" web-class="main-content"></label>`
+                },
+                {
+                    xml: `<sep gap="25"></sep><label text="ถ้าใช้งาน color sensor ตัวที่2 จะต้องต่อ SDA=Servo3 SCL=Servo4" web-class="main-content"></label>`
+                },
+                {
+                    xml : 
+                    `<block type="TCS_color_status">
+                        <value name="_color">
+                            <shadow type="math_number">
+                                <field name="NUM">500</field>
+                            </shadow>
+                        </value>
+                    </block>`
+                },
+                
+                //'TCS_color_config',
+                // {
+                //     xml: `<sep gap="25"></sep><label text="ถ้าใช้งาน color sensor 2 จะต้องต่อ SDA=Servo3 SCL=Servo4"headline"></label>`
+                // },
+                {
+                    xml : 
+                    `<block type="TCS_color_status_B">
+                        <value name="_color">
+                            <shadow type="math_number">
+                                <field name="NUM">500</field>
+                            </shadow>
+                        </value>
+                    </block>`
+                },
                 //'Ultrasinoc_sensor',
                 //'Puppy_beep',
                 
@@ -238,6 +269,9 @@ module.exports = {
                             </shadow>
                         </value>
                     </block>`
+                },
+                {
+                    xml: `<sep gap="25"></sep><label text="ระบบขับเคลื่อน 4 ล้อ แบ่งเป็น M1=หน้าซ้าย M2=หน้าขวา M3=หลังซ้าย M4=หลังขวา" web-class="main-content"></label>`
                 },
                 {
                     xml : 
