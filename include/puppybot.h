@@ -2,6 +2,7 @@
 #include <Adafruit_GFX.h>    // Core graphics library
 #include <Adafruit_ST7735.h> // Hardware-specific library for ST7735
 #include <Adafruit_ST7789.h> // Hardware-specific library for ST7789
+#include <Adafruit_TCS34725.h>
 #include <SPI.h>
 
 
@@ -12,6 +13,9 @@
 #define TFT_RST  (21)
 
 Adafruit_ST7735 tft_(TFT_CS, TFT_DC, TFT_MOSI, TFT_SCLK, TFT_RST);
+
+Adafruit_TCS34725 tcs = Adafruit_TCS34725(TCS34725_INTEGRATIONTIME_50MS, TCS34725_GAIN_4X);
+Adafruit_TCS34725 tcsB = Adafruit_TCS34725();
 
 Servo servo1;
 Servo servo2;
@@ -73,6 +77,9 @@ void puppybot_setup() {
   tft_.setRotation(1);
   tft_.fillScreen(ST77XX_BLACK);
   pinMode(6, INPUT_PULLUP);
+   if (tcs.begin()) {
+    Serial.println("Found sensor");
+  }
 
 }
 int ADC(int analog_CH) {
@@ -1016,4 +1023,53 @@ void Run_PID4DW_until_frontSensor(int RUN_PID_speed,float RUN_PID_KP,float RUN_P
     delay(1);
     previous_error = errors;
   }while(Read_sumValue_sensor() < sumValue_traget);
+}
+
+
+int Read_Color_TCS(int color_of_sensor)
+{
+  uint16_t clearcol_lib, red_lib, green_lib, blue_lib;
+  float average_lib, r_lib, g_lib, b_lib;
+  float data_color = 0.00;
+ //delay(100); // Farbmessung dauert c. 50ms 
+ tcs.getRawData(&red_lib, &green_lib, &blue_lib, &clearcol_lib);
+ average_lib = (red_lib+green_lib+blue_lib)/3;
+ r_lib = red_lib/average_lib;
+ g_lib = green_lib/average_lib;
+ b_lib = blue_lib/average_lib;
+ if(color_of_sensor == 0){
+  data_color =  r_lib*100;
+ }
+ else if(color_of_sensor == 1){
+  data_color =  g_lib*100;
+ }
+  else if(color_of_sensor == 2){
+  data_color =  b_lib*100;
+ }
+
+  return data_color;
+}
+
+int Read_Color_TCS_B(int color_of_sensor)
+{
+  uint16_t clearcol_lib, red_lib, green_lib, blue_lib;
+  float average_lib, r_lib, g_lib, b_lib;
+  float data_color = 0.00;
+ //delay(100); // Farbmessung dauert c. 50ms 
+ tcsB.getRawData(&red_lib, &green_lib, &blue_lib, &clearcol_lib);
+ average_lib = (red_lib+green_lib+blue_lib)/3;
+ r_lib = red_lib/average_lib;
+ g_lib = green_lib/average_lib;
+ b_lib = blue_lib/average_lib;
+ if(color_of_sensor == 0){
+  data_color =  r_lib*100;
+ }
+ else if(color_of_sensor == 1){
+  data_color =  g_lib*100;
+ }
+  else if(color_of_sensor == 2){
+  data_color =  b_lib*100;
+ }
+
+  return data_color;
 }
