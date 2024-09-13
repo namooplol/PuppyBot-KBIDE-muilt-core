@@ -112,7 +112,7 @@ module.exports = function(Blockly) {
     var value_color = rgbto16bit(block.getFieldValue("COLOR"));
     var value_color2 = rgbto16bit(block.getFieldValue("COLOR2"));
     
-    var code = `printText(${value_x}, ${value_y}, ${value_text}, ${value_size}, 0x${value_color}, 0x${value_color2});`;
+    var code = `printnumber(${value_x}, ${value_y}, ${value_text}, ${value_size}, 0x${value_color}, 0x${value_color2});`;
     return code;
   };
 
