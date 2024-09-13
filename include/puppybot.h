@@ -128,11 +128,12 @@ void printText(uint8_t x,uint8_t y,String text,uint8_t size,uint16_t  color){
   tft_.println(text);
 }
 void printText(uint8_t x,uint8_t y,int text,uint8_t size,uint16_t  color){
-  tft_.setCursor(x, y);
-  tft_.setTextSize(size);
-  tft_.setTextColor(color);
-  tft_.setTextWrap(true);
-  tft_.println(String(text));
+  // tft_.setCursor(x, y);
+  // tft_.setTextSize(size);
+  // tft_.setTextColor(color);
+  // tft_.setTextWrap(true);
+  // tft_.println(String(text));
+
 }
 void printText(uint8_t x,uint8_t y,String text,uint8_t size,uint16_t  color1,uint16_t  color2){
   tft_.setCursor(x, y);
@@ -181,6 +182,23 @@ void printnumber(uint8_t x,uint8_t y,String Input_text,int text,uint8_t size,uin
     text_ =  String(text) + " "; 
   }
   tft_.println(Input_text + text_);
+}
+void printnumber(uint8_t x,uint8_t y,String Input_text,uint8_t size,uint16_t  color1,uint16_t  color2){
+  tft_.setCursor(x, y);
+  tft_.setTextSize(size);
+  tft_.setTextColor(color1,color2);
+  tft_.setTextWrap(true);
+  // String text_ ;
+  // if(text <9){
+  //   text_ = String(text) + " "+ " "+ " "; 
+  // }
+  // else if(text <99){
+  //   text_ =  String(text) + " "+ " "; 
+  // }
+  // else if(text <999){
+  //   text_ =  String(text) + " "; 
+  // }
+  tft_.println(Input_text);
 }
 void drawString(String text, uint8_t x,uint8_t y) {
   tft_.setCursor(x, y);
