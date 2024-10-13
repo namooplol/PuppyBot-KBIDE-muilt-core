@@ -56,11 +56,11 @@ Blockly.JavaScript['TCS_color_status_B'] = function(block) {
 //   var code = '(ultrasonic())';
 //   return [code, Blockly.JavaScript.ORDER_ATOMIC];
 // };
-// Blockly.JavaScript['Light_Sensor'] = function(block) {
-//   var dropdown_pin = block.getFieldValue('pin');
-//   var code = `(ADC(${dropdown_pin}))`;
-//   return [code, Blockly.JavaScript.ORDER_ATOMIC];
-// };
+Blockly.JavaScript['Light_Sensor'] = function(block) {
+  var dropdown_pin = block.getFieldValue('pin');
+  var code = `(ADC(${dropdown_pin}))`;
+  return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};
 // Blockly.JavaScript['LDR_Sensor'] = function(block) {
 //   var dropdown_pin = block.getFieldValue('pin');
 //   var code = `(analog(${dropdown_pin}))`;
