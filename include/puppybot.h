@@ -14,7 +14,7 @@
 
 Adafruit_ST7735 tft_(TFT_CS, TFT_DC, TFT_MOSI, TFT_SCLK, TFT_RST);
 
-Adafruit_TCS34725 tcs = Adafruit_TCS34725(TCS34725_INTEGRATIONTIME_50MS, TCS34725_GAIN_4X);
+Adafruit_TCS34725 tcs = Adafruit_TCS34725(TCS34725_INTEGRATIONTIME_2_4MS, TCS34725_GAIN_4X);
 Adafruit_TCS34725 tcsB = Adafruit_TCS34725();
 
 Servo servo1;
@@ -142,14 +142,14 @@ void printText(uint8_t x,uint8_t y,String text,uint8_t size,uint16_t  color1,uin
   tft_.setTextWrap(true);
   tft_.println(text);
 }
-void printText(uint8_t x,uint8_t y,int text,uint8_t size,uint16_t  color1,uint16_t  color2){
+void printText(uint8_t x,uint8_t y,long text,uint8_t size,uint16_t  color1,uint16_t  color2){
   tft_.setCursor(x, y);
   tft_.setTextSize(size);
   tft_.setTextColor(color1,color2);
   tft_.setTextWrap(true);
   tft_.println(String(text));
 }
-void printnumber(uint8_t x,uint8_t y,int text,uint8_t size,uint16_t  color1,uint16_t  color2){
+void printnumber(uint8_t x,uint8_t y,long text,uint8_t size,uint16_t  color1,uint16_t  color2){
   tft_.setCursor(x, y);
   tft_.setTextSize(size);
   tft_.setTextColor(color1,color2);
@@ -164,6 +164,14 @@ void printnumber(uint8_t x,uint8_t y,int text,uint8_t size,uint16_t  color1,uint
   else if(text <999){
     text_ =  String(text) + " "; 
   }
+  else if(text <9999){
+    text_ =  String(text) + " "; 
+  }
+  else{
+   text_ =  String(text) ; 
+  }
+
+  //text_ =  String(text) ;
   tft_.println(text_);
 }
 void printnumber(uint8_t x,uint8_t y,String Input_text,int text,uint8_t size,uint16_t  color1,uint16_t  color2){
@@ -539,6 +547,7 @@ void servoRun(uint8_t servo_ch, int16_t angle) {
   {
     if(angle == -1){servo1.detach();}
     servo1.attach(_servo1,300,2500,angle);
+    
   }
   if (servo_ch == 2)
   {
@@ -1044,13 +1053,17 @@ void Run_PID4DW_until_frontSensor(int RUN_PID_speed,float RUN_PID_KP,float RUN_P
 }
 
 
-int Read_Color_TCS(int color_of_sensor)
+long Read_Color_TCS(int color_of_sensor)
 {
-  uint16_t clearcol_lib, red_lib, green_lib, blue_lib;
+
+  uint16_t clearcol_lib, red_lib, green_lib, blue_lib,lux,colorTemp;
   float average_lib, r_lib, g_lib, b_lib;
-  float data_color = 0.00;
+  long data_color = 0.00;
  //delay(100); // Farbmessung dauert c. 50ms 
  tcs.getRawData(&red_lib, &green_lib, &blue_lib, &clearcol_lib);
+ colorTemp = tcs.calculateColorTemperature(red_lib, green_lib, blue_lib);
+  lux = tcs.calculateLux(red_lib, green_lib, blue_lib);
+
  average_lib = (red_lib+green_lib+blue_lib)/3;
  r_lib = red_lib/average_lib;
  g_lib = green_lib/average_lib;
@@ -1063,6 +1076,12 @@ int Read_Color_TCS(int color_of_sensor)
  }
   else if(color_of_sensor == 2){
   data_color =  b_lib*100;
+ }
+ else if(color_of_sensor == 3){
+  data_color =  colorTemp;
+ }
+ else if(color_of_sensor == 4){
+  data_color =  lux;
  }
 
   return data_color;
@@ -1070,11 +1089,14 @@ int Read_Color_TCS(int color_of_sensor)
 
 int Read_Color_TCS_B(int color_of_sensor)
 {
-  uint16_t clearcol_lib, red_lib, green_lib, blue_lib;
+  uint16_t clearcol_lib, red_lib, green_lib, blue_lib,lux,colorTemp;
   float average_lib, r_lib, g_lib, b_lib;
-  float data_color = 0.00;
+  long data_color = 0.00;
  //delay(100); // Farbmessung dauert c. 50ms 
  tcsB.getRawData(&red_lib, &green_lib, &blue_lib, &clearcol_lib);
+ colorTemp = tcsB.calculateColorTemperature(red_lib, green_lib, blue_lib);
+  lux = tcsB.calculateLux(red_lib, green_lib, blue_lib);
+
  average_lib = (red_lib+green_lib+blue_lib)/3;
  r_lib = red_lib/average_lib;
  g_lib = green_lib/average_lib;
@@ -1087,6 +1109,12 @@ int Read_Color_TCS_B(int color_of_sensor)
  }
   else if(color_of_sensor == 2){
   data_color =  b_lib*100;
+ }
+ else if(color_of_sensor == 3){
+  data_color =  colorTemp;
+ }
+ else if(color_of_sensor == 4){
+  data_color =  lux;
  }
 
   return data_color;
