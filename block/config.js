@@ -52,7 +52,7 @@ module.exports = {
                         </value>
                     </block>`
                 },
-                //'Ultrasinoc_sensor',
+                'Ultrasonic_sensor',
                 //'Puppy_beep',
                 
             ]

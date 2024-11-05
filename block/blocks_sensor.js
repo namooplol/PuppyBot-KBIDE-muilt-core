@@ -37,18 +37,18 @@ Blockly.Blocks['button_1_status'] = {
   }
 };
 
-Blockly.Blocks['Ultrasinoc_sensor'] = {
-  init: function() {
-    this.appendDummyInput()
-        //.appendField(new Blockly.FieldImage("/static/icons/bmx055.png", 20, 20, "*"))
-        .appendField("Read Distance");
-    this.setInputsInline(true);
-    this.setOutput(true, "Number");
-    this.setColour(65);
- this.setTooltip("Read Distance");
- this.setHelpUrl("");
-  }
-};
+// Blockly.Blocks['Ultrasinoc_sensor'] = {
+//   init: function() {
+//     this.appendDummyInput()
+//         //.appendField(new Blockly.FieldImage("/static/icons/bmx055.png", 20, 20, "*"))
+//         .appendField("Read Distance");
+//     this.setInputsInline(true);
+//     this.setOutput(true, "Number");
+//     this.setColour(65);
+//  this.setTooltip("Read Distance");
+//  this.setHelpUrl("");
+//   }
+// };
 Blockly.Blocks['Light_Sensor'] = {
   init: function() {
     this.appendDummyInput()
@@ -92,7 +92,7 @@ Blockly.Blocks['TCS_color_status'] = {
     init: function() {
       this.appendDummyInput()
           .appendField("TCS_color at")
-          .appendField(new Blockly.FieldDropdown([["R","0"],["G","1"], ["B","2"]]), "_color");
+          .appendField(new Blockly.FieldDropdown([["R","0"],["G","1"], ["B","2"], ["colorTemp","3"], ["lux","4"]]), "_color");
       this.setInputsInline(true);
       this.setOutput(true, "Number");
       this.setColour(65);
@@ -101,20 +101,20 @@ Blockly.Blocks['TCS_color_status'] = {
     }
   };
 
-Blockly.Blocks['TCS_color_config'] = {
+Blockly.Blocks['Ultrasonic_sensor'] = {
   init: function() {
     this.appendDummyInput()
-        .appendField("TCS_color_2  Config Pin SDA")
+        .appendField("Ulrasonic Config Pin Echo")
         .appendField(new Blockly.FieldDropdown([["S1","12"],["S2","13"], ["S3","14"], ["S4","15"],
-                            ["D1","25"],["D2","27"], ["D3","28"], ["D4","29"]]), "pin_SDA");
+                            ["D1","25"],["D2","27"], ["D3","28"], ["D4","29"]]), "pin_Echo");
     this.appendDummyInput()
-        .appendField("Pin SCL")
+        .appendField("Pin Trig")
         .appendField(new Blockly.FieldDropdown([["S2","13"],["S1","12"], ["S3","14"], ["S4","15"],
-                            ["D1","25"],["D2","27"], ["D3","28"], ["D4","29"]]), "pin_SCL");
-     this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
+                            ["D1","25"],["D2","27"], ["D3","28"], ["D4","29"]]), "pin_Trig");
+    this.setInputsInline(true);
+    this.setOutput(true, "Number");
     this.setColour(65);
-    this.setTooltip("config pin for TCS34725");
+    this.setTooltip("config pin for Ultrasonic");
     this.setHelpUrl("");
   }
 };
@@ -123,7 +123,7 @@ Blockly.Blocks['TCS_color_status_B'] = {
     init: function() {
       this.appendDummyInput()
           .appendField("TCS_color_2 at")
-          .appendField(new Blockly.FieldDropdown([["R","0"],["G","1"], ["B","2"]]), "_color");
+          .appendField(new Blockly.FieldDropdown([["R","0"],["G","1"], ["B","2"], ["colorTemp","3"], ["lux","4"]]), "_color");
       this.setInputsInline(true);
       this.setOutput(true, "Number");
       this.setColour(65);

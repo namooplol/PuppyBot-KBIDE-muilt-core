@@ -38,6 +38,18 @@ Blockly.JavaScript['TCS_color_status_B'] = function(block) {
               (Read_Color_TCS_B(${dropdown_pin}))`;
   return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
+Blockly.JavaScript['Light_Sensor'] = function(block) {
+  var dropdown_pin = block.getFieldValue('pin');
+  var code = `(ADC(${dropdown_pin}))`;
+  return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};
+
+Blockly.JavaScript['Ultrasonic_sensor'] = function(block) {  
+  var dropdown_pin_Echo = block.getFieldValue('pin_Echo');
+  var dropdown_pin_Trig = block.getFieldValue('pin_Trig');
+  var code = `(ultrasonic(${dropdown_pin_Echo},${dropdown_pin_Trig}))`;
+  return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};
 
 
 
@@ -56,11 +68,7 @@ Blockly.JavaScript['TCS_color_status_B'] = function(block) {
 //   var code = '(ultrasonic())';
 //   return [code, Blockly.JavaScript.ORDER_ATOMIC];
 // };
-Blockly.JavaScript['Light_Sensor'] = function(block) {
-  var dropdown_pin = block.getFieldValue('pin');
-  var code = `(ADC(${dropdown_pin}))`;
-  return [code, Blockly.JavaScript.ORDER_ATOMIC];
-};
+
 // Blockly.JavaScript['LDR_Sensor'] = function(block) {
 //   var dropdown_pin = block.getFieldValue('pin');
 //   var code = `(analog(${dropdown_pin}))`;
