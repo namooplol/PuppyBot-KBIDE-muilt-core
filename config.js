@@ -1,7 +1,7 @@
 module.exports = {
-  name: "puppybot",
+  name: "puppybot-muilt_core",
   platform: "arduino-pico",
-  title: "PuppyBot",
+  title: "PuppyBot-muilt-core-by-swd-namo",
   description: "บอร์ดควบคุมหุ่นยนต์พลัง RP2040",
   author: "PrinceBot",
   website: "https://princebot.net",
