@@ -4,6 +4,7 @@
 #include <Adafruit_ST7789.h> // Hardware-specific library for ST7789
 #include <Adafruit_TCS34725.h>
 #include <SPI.h>
+#include <pico/multicore.h>
 
 
 #define TFT_CS   (17)
@@ -268,13 +269,8 @@ void wait_SW1() {
     drawString("9="+String(ADC(9))+' ',80,68);
     drawString("10="+String(ADC(10))+' ',0,85);
   } while (digitalRead(6) == 1);
-  buzzer(500,100);
-  delay(200);
-  buzzer(700,100);
-  delay(200);
-  buzzer(1000,100);
-  delay(200);
   buzzer(2000,100);
+  delay(400);
   
 }
 
