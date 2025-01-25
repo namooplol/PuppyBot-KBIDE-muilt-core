@@ -8,6 +8,15 @@ Blockly.JavaScript['sw1_press_one'] = function(block) {
   var code = 'wait_SW1_one();\n';
   return code;
 };
+Blockly.JavaScript['muilt_core'] = function(block) {
+  var functionName = block.getFieldValue('FUNCTION');
+  var code = `multicore_launch_core1(${functionName});\n`;
+  return code;
+};
+
+
+
+
 Blockly.JavaScript['button_1_status'] = function(block) {  
   var code = '(digitalRead(6))';  
   return [code, Blockly.JavaScript.ORDER_ATOMIC];

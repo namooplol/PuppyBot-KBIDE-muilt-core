@@ -22,6 +22,16 @@ module.exports = {
                     </block>`
                 },
                 {
+                    xml : 
+                    `<block type="muilt_core">
+                        <value name="value_func_name">
+                            <shadow type="basic_string">
+                                <field name="core_one">1</field>
+                            </shadow>
+                        </value>
+                    </block>`
+                },
+                {
                     xml: `<sep gap="25"></sep><label text="ถ้าใช้งาน color sensor ตัวที่1 จะต้องต่อ SDA SCL ตามปกติ" web-class="main-content"></label>`
                 },
                 {

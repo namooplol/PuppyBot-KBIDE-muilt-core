@@ -132,5 +132,18 @@ Blockly.Blocks['TCS_color_status_B'] = {
     }
   };
 
+  Blockly.Blocks['muilt_core'] = {
+    init: function() {
+      this.appendDummyInput()
+          .appendField("muilt_core")
+          .appendField(new Blockly.FieldDropdown([["muilt_core_task", "muilt_core_task"]]), "FUNCTION");
+      this.setPreviousStatement(true, null);
+      this.setNextStatement(true, null);
+      this.setColour(180); // สีฟ้าอ่อน
+      this.setTooltip("");
+      this.setHelpUrl("");
+    }
+  };
+  
 
 }
